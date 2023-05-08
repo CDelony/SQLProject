@@ -1,0 +1,37 @@
+
+--- 1
+
+
+--- Returnes the first name and last name of the user who created the listing and the title and price of the listing.
+
+SELECT first_name, last_name, title, listing_price
+FROM user_t u JOIN listing_t l ON u.user_id = l.user_id; 
+
+
+
+---2
+
+--- returns the name of the user who has placed a bid and how much the bidded 
+
+SELECT first_name, last_name, bid_amount
+FROM user_t u JOIN bid_t b ON u.user_id = b.user_id;
+
+
+---- 3 
+
+-- returns the name of the user who sent a message in our system
+
+SELECT first_name, last_name, usermessage
+FROM user_t u JOIN message_t m ON u.user_id = m.user_id;
+
+
+
+--- 4
+
+--- returns the name of the user who created each listing, the vehical on the listing, the amount of the highest bid, the make of the vehical and the manufacture of the vehical
+
+SELECT first_name, last_name, title, bid_amount, VehicalMake, ModelNumber, Manufacture_name
+FROM user_t u JOIN listing_t l ON u.user_id = l.user_id
+JOIN bid_t b ON l.listing_id = b.listing_id
+JOIN Vehical_info_t v ON l.VinNumber = v.VinNumber
+JOIN Manufacture_t m ON V.Manufacture_id = M.Manufacture_id;
